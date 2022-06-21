@@ -1,19 +1,22 @@
+//update price cart
 function updateCartprice() {
-    var total = 0;
+    var quantity = 0;
     var prices = 0;
     
-    let amir = 0
+    let total = 0
     var quantityItem = document.getElementsByClassName("product_quantity");
     var priceItem = document.getElementsByClassName("cart_price");
 
     for (var i = 0; i < ItemRow.length; i++) {
         cartRow = ItemRow[i]
-        total += JSON.parse(quantityItem[i].value);
-        amir += JSON.parse(priceItem[i].innerText.split(' ')[0])
-        prices= amir * total;
+        quantity = JSON.parse(quantityItem[i].value);
+        prices = JSON.parse(priceItem[i].innerText.split(' ')[0])
+        total += prices * quantity;
     }
-    console.log(total);
-    console.log(prices);
+    document.getElementsByClassName("total_price")[0].innerHTML = total + ' dh'
+    //console.log(total);
+    //console.log('this is qt',quantity);
+    //console.log('this is Price', prices);
     //console.log(ItemRow);
     // console.log('this is Price', (strToNumber(priceItem[0].innerText)));
     // console.log('this is TEXT', (JSON.parse(priceItem[0].innerText.split(' ')[0])));
@@ -21,7 +24,7 @@ function updateCartprice() {
     //total = total + (price * quantity);
 
     //tot = document.getElementsByClassName("total_price")[0].innerHTML;
-    document.getElementsByClassName("total_price")[0].innerHTML = prices + ' dh'
+    
     // console.log('this is tot', tot);
     // console.log('this is origin', document.getElementsByClassName("total_price")[0].innerHTML = amir + ' dh');
     // tot.innerHTML = prices + "dh"
@@ -48,7 +51,7 @@ function addItemToCart(price, imageSrc) {
     var productRow = document.createElement("div");
     productRow.classList.add("itemRow");
     var productRows = document.getElementsByClassName("itemRows")[0];
-    var cart_img = productRows.getElementsByClassName("item_img");
+    var cart_img = productRows.getElementsByClassName("cart_image");
     for (let i = 0; i < cart_img.length; i++) {
         if (cart_img[i].src == imageSrc) {
             alert("this item is already added to the cart");
@@ -105,7 +108,7 @@ function remove(event) {
     updateCartprice();
 }
 
-//update price cart
+
 
 function strToNumber(input) {
     JSON.parse(input.split(' ')[0])
