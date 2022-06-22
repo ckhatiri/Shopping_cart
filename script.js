@@ -113,3 +113,14 @@ function remove(event) {
 function strToNumber(input) {
     JSON.parse(input.split(' ')[0])
 }
+
+// purchase items
+const purchaseBtn = document.querySelector('.purchase_btn');
+
+
+purchaseBtn.addEventListener('click', purchaseButtonClicked)
+
+function purchaseButtonClicked() {
+    
+    alert('Thank you for your purchase');
+}
